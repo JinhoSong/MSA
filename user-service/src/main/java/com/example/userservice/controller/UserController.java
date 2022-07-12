@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user-service")
+@RequestMapping("/")
 public class UserController {
 
     private final UserService userService;
@@ -71,5 +71,10 @@ public class UserController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
     }
+
+//    @GetMapping("/login")
+//    public String  getLogin(){
+//        return "login";
+//    }
 
 }
