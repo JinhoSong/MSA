@@ -33,8 +33,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 //        http.authorizeRequests().antMatchers("/users/**").permitAll();
 
         http.authorizeRequests().antMatchers("/**")
-//                .hasIpAddress("10.30.100.72")
-                .hasIpAddress("172.30.1.16")
+//                .hasIpAddress("10.30.100.72") // mac pro vpn IP
+                .hasIpAddress("172.30.1.53") // mac air
                 .and()
                 .addFilter(getAuthenticationFilter());
 
@@ -42,7 +42,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     }
 
     private AuthenticationFilter getAuthenticationFilter() throws Exception {
-        AuthenticationFilter authenticationFilter = new AuthenticationFilter();
+        AuthenticationFilter authenticationFilter =
+                new AuthenticationFilter(authenticationManager(),userService,environment);
         authenticationFilter.setAuthenticationManager(authenticationManager());
 
         return authenticationFilter;

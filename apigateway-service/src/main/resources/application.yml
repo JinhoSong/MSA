@@ -55,6 +55,7 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
         - id: first-service
           uri : lb://MY-FIRST-SERVICE
           predicates:
@@ -84,3 +85,7 @@ spring:
                 postLogger: true
 #            - AddRequestHeader=second-request, second-request-header2
 #            - AddResponseHeader=second-response, second-response-header2
+
+token:
+  expiration_time: 86400000 # 하루짜리 토큰
+  secret: user_token
