@@ -32,6 +32,7 @@ logging:
   level:
     com.example.userservice: DEBUG
 
-token:
-  expiration_time: 86400000 # 하루짜리 토큰
-  secret: user_token
+# Local git repo 생성 후 읽는 방식으로 변경
+#token:
+#  expiration_time: 86400000 # 하루짜리 토큰
+#  secret: user_token
