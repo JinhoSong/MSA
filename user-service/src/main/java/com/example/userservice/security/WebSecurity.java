@@ -32,9 +32,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 //        http.authorizeRequests().antMatchers("/users/**").permitAll();
 
+        http.authorizeRequests().antMatchers("/actuator/**").permitAll();
         http.authorizeRequests().antMatchers("/**")
 //                .hasIpAddress("10.30.100.72") // mac pro vpn IP
-                .hasIpAddress("172.30.1.53") // mac air
+                .hasIpAddress("172.30.1.16") // mac pro in home
+//                .hasIpAddress("172.30.1.53") // mac air
                 .and()
                 .addFilter(getAuthenticationFilter());
 

@@ -19,10 +19,10 @@ spring:
             preLogger: true
             postLogger: true
       routes:
-#        - id: user-service
-#          uri: lb://USER-SERVICE
-#          predicates:
-#            - Path=/user-service/**
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
@@ -83,6 +83,10 @@ spring:
                 baseMessage: Hi i'm Logger
                 preLogger: true
                 postLogger: true
+    config:
+      name: ecommerce
+  config:
+    import: optional:configserver:http://localhost:8888/user-service
 #            - AddRequestHeader=second-request, second-request-header2
 #            - AddResponseHeader=second-response, second-response-header2
 
