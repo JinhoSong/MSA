@@ -19,10 +19,10 @@ spring:
             preLogger: true
             postLogger: true
       routes:
-        - id: user-service
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/user-service/**
+#        - id: user-service
+#          uri: lb://USER-SERVICE
+#          predicates:
+#            - Path=/user-service/**
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
@@ -79,17 +79,18 @@ spring:
           filters:
             - name: CustomFilter
             - name: LoggingFilter
-              args:
-                baseMessage: Hi i'm Logger
-                preLogger: true
-                postLogger: true
     config:
       name: ecommerce
+      profile: dev
   config:
-    import: optional:configserver:http://localhost:8888/user-service
-#            - AddRequestHeader=second-request, second-request-header2
-#            - AddResponseHeader=second-response, second-response-header2
+    import: optional:configserver:http://localhost:8888
 
-token:
-  expiration_time: 86400000 # 하루짜리 토큰
-  secret: user_token
+#token:
+#  expiration_time: 86400000 # 하루짜리 토큰
+#  secret: user_token
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httptrace
