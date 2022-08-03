@@ -4,9 +4,23 @@ server:
 spring:
   application:
     name : config-service
+  profiles:
+    active: native
   cloud:
     config:
       server:
+        native:
+          search-locations: file:///Users/cjenm/Development/personal/native-file-repo # macbook pro's path
         git:
           uri : file:///Users/cjenm/Development/personal/local-repo # macbook pro's path
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
